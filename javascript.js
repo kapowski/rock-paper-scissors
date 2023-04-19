@@ -24,7 +24,6 @@ function getComputerChoice(array) {
     return item;
 }
 
-
 // Playes round of game
 function playRound(playerSelection, computerSelection) {
 
@@ -36,14 +35,38 @@ function playRound(playerSelection, computerSelection) {
     }
 
     if (comparisons[playerSelection].strongTo === computerSelection) {
-        return "You win! " + playerSelection + " beats " + computerSelection;
+        const win = "You win! " + playerSelection + " beats " + computerSelection;
+        return win
+        return true
     } else if (comparisons[playerSelection].weakto === computerSelection) {
-        return "You lose! " + computerSelection + " beats " + playerSelection
+        const lose = "You lose! " + computerSelection + " beats " + playerSelection
+        return lose
     } else {
-        return playerSelection + " ties " + computerSelection +"!"
+        const tie = playerSelection + " ties " + computerSelection +"!"
+        return tie
     }
-
 }
 
+// computerSelection = getComputerChoice(computerChoiceArray)
+// console.log(playRound(playerSelection, computerSelection));
+
+function game(round) {
+    let i = 0
+    while (i < 5) {
+        var points = 0
+        if (round === true) {
+            points += 1
+            i += 1
+            return round + " Points: " + points;
+        } else {
+            return round + " Points: " + points
+            i += 1
+        }
+    }
+}
+
+// Gameplay
 computerSelection = getComputerChoice(computerChoiceArray)
-console.log(playRound(playerSelection, computerSelection));
+const round = playRound(playerSelection, computerSelection);
+// console.log(round)
+console.log(game(round))
