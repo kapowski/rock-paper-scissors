@@ -1,3 +1,10 @@
+
+// INPUTS
+const computerChoiceArray = ["rock", "paper", "scissors"] 
+const playerSelection = prompt("Rock paper or scissors?").toLowerCase();
+
+
+// FUNCTIONS
 // Randomly selects rock, paper or scissors for computer
 function getComputerChoice(array) {
     
@@ -9,7 +16,3 @@ function getComputerChoice(array) {
 
     return item;
 }
-
-const computerChoiceArray = ["rock", "paper", "scissors"] 
-
-console.log(getComputerChoice(computerChoiceArray))
