@@ -1,10 +1,17 @@
 
 // INPUTS
-const computerChoiceArray = ["rock", "paper", "scissors"] 
-const playerSelection = prompt("Rock paper or scissors?").toLowerCase();
 
+// computer options
+const computerChoiceArray = ["Rock", "Paper", "Scissors"] 
+
+// player input
+const input = prompt("Rock paper or scissors?")
+
+// converts first letter of input to upper case
+const playerSelection = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
 
 // FUNCTIONS
+
 // Randomly selects rock, paper or scissors for computer
 function getComputerChoice(array) {
     
@@ -16,3 +23,27 @@ function getComputerChoice(array) {
 
     return item;
 }
+
+
+// Playes round of game
+function playRound(playerSelection, computerSelection) {
+
+    // establishes weak vs strong relationship between R P and S elements using nested dictionary
+    const comparisons = {
+        Rock: {weakTo: 'Paper', strongTo: 'Scissors'},
+        Paper: {weakTo: 'Scissors', strongTo: 'Rock'},
+        Scissors: {weakTo: 'Rock', strongTo: 'Paper'} 
+    }
+
+    if (comparisons[playerSelection].strongTo === computerSelection) {
+        return "You win! " + playerSelection + " beats " + computerSelection;
+    } else if (comparisons[playerSelection].weakto === computerSelection) {
+        return "You lose! " + computerSelection + " beats " + playerSelection
+    } else {
+        return playerSelection + " ties " + computerSelection +"!"
+    }
+
+}
+
+computerSelection = getComputerChoice(computerChoiceArray)
+console.log(playRound(playerSelection, computerSelection));
