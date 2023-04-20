@@ -1,29 +1,4 @@
 
-// INPUTS
-
-// computer options
-const computerChoiceArray = ["Rock", "Paper", "Scissors"] 
-
-// player input
-const input = prompt("Rock paper or scissors?")
-
-// converts first letter of input to upper case
-const playerSelection = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
-
-// FUNCTIONS
-
-// Randomly selects rock, paper or scissors for computer
-function getComputerChoice(array) {
-    
-    // get random index value
-    const randomIndex = Math.floor(Math.random() * array.length);
-    
-    // get random item
-    const item = array[randomIndex];
-
-    return item;
-}
-
 // Playes round of game
 function playRound(playerSelection, computerSelection) {
 
@@ -37,36 +12,62 @@ function playRound(playerSelection, computerSelection) {
     if (comparisons[playerSelection].strongTo === computerSelection) {
         const win = "You win! " + playerSelection + " beats " + computerSelection;
         return win
-        return true
-    } else if (comparisons[playerSelection].weakto === computerSelection) {
-        const lose = "You lose! " + computerSelection + " beats " + playerSelection
+    } else if (comparisons[playerSelection].weakTo === computerSelection) {
+        const lose = "You lose! " + computerSelection + " beats " + playerSelection;
         return lose
     } else {
-        const tie = playerSelection + " ties " + computerSelection +"!"
+        const tie = playerSelection + " ties " + computerSelection +"!";
         return tie
     }
 }
 
-// computerSelection = getComputerChoice(computerChoiceArray)
-// console.log(playRound(playerSelection, computerSelection));
+// plays 5 round game
+function playGame() {
+    
+    let playerPoints = 0
+    let computerPoints = 0
+    
+    for(var i=0;i<5;i++) {
+        // computer options
+        const computerChoiceArray = ["Rock", "Paper", "Scissors"] 
 
-function game(round) {
-    let i = 0
-    while (i < 5) {
-        var points = 0
-        if (round === true) {
-            points += 1
-            i += 1
-            return round + " Points: " + points;
+        // player input
+        var input = prompt("Rock paper or scissors?")
+
+        // converts first letter of input to upper case
+        const playerSelection = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+
+
+        // Randomly selects rock, paper or scissors for computer
+        function getComputerChoice(array) {
+        
+            // get random index value
+            const randomIndex = Math.floor(Math.random() * array.length);
+        
+            // get random item
+            const item = array[randomIndex];
+
+            return item;
+        }
+        const computerSelection = getComputerChoice(computerChoiceArray)
+        var round = playRound(playerSelection, computerSelection)
+        // console.log(round)
+        
+        if (round === "You win! " + playerSelection + " beats " + computerSelection) {
+            playerPoints += 1;
+            console.log(round);
+            console.log(round + " Player Points: " + playerPoints + " Computer Points: " + computerPoints);   
+        } else if (round === "You lose! " + computerSelection + " beats " + playerSelection) {
+            computerPoints += 1
+            console.log(round);
+            console.log(round + " Player Points: " + playerPoints + " Computer Points: " + computerPoints);
         } else {
-            return round + " Points: " + points
-            i += 1
+            console.log(round + " No score" );
+            console.log(round + " Player Points: " + playerPoints + " Computer Points: " + computerPoints);
         }
     }
 }
 
+
 // Gameplay
-computerSelection = getComputerChoice(computerChoiceArray)
-const round = playRound(playerSelection, computerSelection);
-// console.log(round)
-console.log(game(round))
+console.log(playGame())
