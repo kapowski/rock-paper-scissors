@@ -52,7 +52,6 @@ function playGame() {
         
             // Get random item
             const item = array[randomIndex];
-
             return item;
         }
         // Initiates playRound
