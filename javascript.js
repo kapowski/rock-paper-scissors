@@ -25,61 +25,89 @@ function playRound(playerSelection, computerSelection) {
 // plays 5 round game
 // function playGame() {
     
-    // Sets up scorecard
-    let playerPoints = 0
-    let computerPoints = 0
+//     // Sets up scorecard
+//     let playerPoints = 0
+//     let computerPoints = 0
     
-    // Loops game 5 times
-    for(var i=0;i<5;i++) {
+//     // Loops game 5 times
+//     for(var i=0;i<5;i++) {
         
-        // Initiates inputs for game
+//         // Initiates inputs for game
         
-        // Computer options
-        const computerChoiceArray = ["Rock", "Paper", "Scissors"] 
+//         // Computer options
+//         const computerChoiceArray = ["Rock", "Paper", "Scissors"] 
 
-        // Player input
-        var input = prompt("Rock paper or scissors?")
+//         // Player input
+//         var input = prompt("Rock paper or scissors?")
 
-        // Converts first letter of input to upper case
-        const playerSelection = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+//         // Converts first letter of input to upper case
+//         const playerSelection = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
 
 
-        // Randomly selects rock, paper or scissors for computer
-        function getComputerChoice(array) {
+//         // Randomly selects rock, paper or scissors for computer
+//         function getComputerChoice(array) {
         
-            // Get random index value
-            const randomIndex = Math.floor(Math.random() * array.length);
+//             // Get random index value
+//             const randomIndex = Math.floor(Math.random() * array.length);
         
-            // Get random item
-            const item = array[randomIndex];
-            return item;
-        }
-        // Initiates playRound
-        const computerSelection = getComputerChoice(computerChoiceArray)
-        var round = playRound(playerSelection, computerSelection)
+//             // Get random item
+//             const item = array[randomIndex];
+//             return item;
+//         }
+//         // Initiates playRound
+//         const computerSelection = getComputerChoice(computerChoiceArray)
+//         var round = playRound(playerSelection, computerSelection)
         
-        // Updates scorecard
-        if (round === "You win! " + playerSelection + " beats " + computerSelection) {
-            playerPoints += 1;
-            console.log(round + ". " + "Player Points: " + playerPoints + " Computer Points: " + computerPoints);  
-        } else if (round === "You lose! " + computerSelection + " beats " + playerSelection) {
-            computerPoints += 1
-            console.log(round + ". " + " Player Points: " + playerPoints + " Computer Points: " + computerPoints);
-        } else {
-            console.log(round + ". " + " Player Points: " + playerPoints + " Computer Points: " + computerPoints);
-        }
-    }
+//         // Updates scorecard
+//         if (round === "You win! " + playerSelection + " beats " + computerSelection) {
+//             playerPoints += 1;
+//             console.log(round + ". " + "Player Points: " + playerPoints + " Computer Points: " + computerPoints);  
+//         } else if (round === "You lose! " + computerSelection + " beats " + playerSelection) {
+//             computerPoints += 1
+//             console.log(round + ". " + " Player Points: " + playerPoints + " Computer Points: " + computerPoints);
+//         } else {
+//             console.log(round + ". " + " Player Points: " + playerPoints + " Computer Points: " + computerPoints);
+//         }
+//     }
 
-    // Final Score Message
-    if (playerPoints > computerPoints) {
-       return "You win the game!";
-    } else if (playerPoints < computerPoints) {
-        return "You lose the game!";
-    } else {
-        return "Tie Game!"
-    }
-}
+//     // Final Score Message
+//     if (playerPoints > computerPoints) {
+//        return "You win the game!";
+//     } else if (playerPoints < computerPoints) {
+//         return "You lose the game!";
+//     } else {
+//         return "Tie Game!"
+//     }
+// }
 
 // Gameplay
 // console.log(playGame())
 
+// Gameplay 2.0
+
+// selects all buttons classes
+const btns = document.querySelectorAll(".button");
+
+// for each button class clicked, inputs button name (i.e rock) and uses that as player selection while calling 
+// getComputerChoice function to randomly select a computer selection
+btns.forEach((button) => {
+    button.addEventListener('click', () => {
+        
+        function getComputerChoice(array) {
+            
+            // Get random index value
+            const randomIndex = Math.floor(Math.random() * array.length);
+                    
+            // Get random item
+            const item = array[randomIndex];
+            return item;
+        }
+        
+        const txt = button.textContent
+        console.log(txt)
+        const computerChoiceArray = ["Rock", "Paper", "Scissors"]
+        const computerSelection = getComputerChoice(computerChoiceArray)
+       
+        console.log(playRound(txt, computerSelection))
+    })
+})
