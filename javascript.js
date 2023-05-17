@@ -23,7 +23,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // plays 5 round game
-function playGame() {
+// function playGame() {
     
     // Sets up scorecard
     let playerPoints = 0
@@ -81,5 +81,5 @@ function playGame() {
 }
 
 // Gameplay
-console.log(playGame())
+// console.log(playGame())
 
